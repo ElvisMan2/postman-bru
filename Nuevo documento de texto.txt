@@ -1,1 +1,53 @@
 Como Equipo de Gestión de Retenciones, Quiero que el sistema genere un reporte diario de verificación de retenciones, permitiendo ingresar una fecha específica y ofreciendo dos botones para exportar el reporte en formato PDF y en formato XML, incluyendo la fecha de consulta, las columnas RUC, Contrato, Proveedor, Tipo Doc., Nro. Ser., Nro, Fecha Doc., Tipo Mon., Importe Total, Importe de Pago, Importe Retenido M.N., Tipo Cambio, así como la sumatoria total de las retenciones del día seleccionado, Para poder realizar el seguimiento y control de las obligaciones tributarias de los proveedores antes de su pago a la SUNAT, facilitando la auditoría y el cumplimiento normativo.
+
+
+
+Aquí tienes los **criterios de aceptación** en formato **Dado-Cuando-Entonces** (Gherkin) para los cuatro escenarios solicitados, basados en tu tabla de validación de fecha y tipo de reporte (PDF y Excel). Se ha mantenido la estructura similar a la del ejemplo original de JIRA.
+
+---
+
+Escenario 1: Fecha válida y generación de reporte en PDF
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha válida (formato dd/MM/yyyy y no mayor al día actual) en el campo de entrada
+Y hace clic en el botón “Generar PDF”
+Cuando el sistema procesa la solicitud
+Entonces se genera el reporte en formato PDF
+Y el PDF contiene la fecha consultada, todas las columnas (RUC, Contrato, Proveedor, Tipo Doc., Nro. Ser., Nro, Fecha Doc., Tipo Mon., Importe Total, Importe de Pago, Importe Retenido M.N., Tipo Cambio) y la sumatoria total de retenciones del día
+Y se inicia la descarga automática del archivo.
+
+---
+
+Escenario 2: Fecha válida y generación de reporte en Excel
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha válida (formato dd/MM/yyyy y no mayor al día actual) en el campo de entrada
+Y hace clic en el botón “Generar Excel”
+Cuando el sistema procesa la solicitud
+Entonces se genera el reporte en formato Excel (.xlsx o .xls)
+Y el Excel contiene la fecha consultada, todas las columnas mencionadas y la sumatoria total de retenciones del día
+Y se inicia la descarga automática del archivo.
+
+---
+
+Escenario 3: Fecha no válida y solicitud de reporte en PDF
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha no válida (por ejemplo: formato incorrecto, fecha futura, fecha vacía o fecha inexistente como 32/01/2025) en el campo de entrada
+Y hace clic en el botón “Generar PDF”
+Cuando el sistema valida la fecha
+Entonces no se genera ningún reporte
+Y se muestra un mensaje de error claro indicando “Fecha inválida. Por favor ingrese una fecha en formato dd/MM/yyyy y no mayor al día actual”
+Y el estado del proceso es fallido (no se descarga archivo alguno).
+
+---
+
+Escenario 4: Fecha no válida y solicitud de reporte en Excel
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha no válida (por ejemplo: formato incorrecto, fecha futura, fecha vacía o fecha inexistente) en el campo de entrada
+Y hace clic en el botón “Generar Excel”
+Cuando el sistema valida la fecha
+Entonces no se genera ningún reporte
+Y se muestra un mensaje de error claro indicando “Fecha inválida. Por favor ingrese una fecha en formato dd/MM/yyyy y no mayor al día actual”
+Y el estado del proceso es fallido (no se descarga archivo alguno).
+
+---
+
+¿Necesitas que agregue también el manejo de casos donde la fecha es válida pero no hay retenciones para ese día (reporte vacío con solo la sumatoria en cero)? Ese podría ser un quinto escenario opcional.
