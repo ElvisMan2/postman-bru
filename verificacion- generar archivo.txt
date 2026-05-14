@@ -7,3 +7,25 @@ Valido	Valido
 
 el primer caso es ok
 el segundo es no ok.
+
+
+Escenario 1: Mes y año válidos → Generación exitosa del archivo leasing.dbf
+Dado que el usuario accede al módulo de Intervenciones del sistema de gestión de retenciones
+Y selecciona un mes válido (01 al 12) en el campo "Mes"
+Y selecciona un año válido (por ejemplo, 2025) en el campo "Año"
+Cuando hace clic en el botón “Generar”
+Entonces el sistema consulta todas las retenciones registradas en el mes y año seleccionados
+Y genera un archivo en formato DBF con el nombre leasing.dbf
+Y el archivo contiene todas las columnas esperadas: RUC, Proveedor, Día, Mes, Año, Certificado, Tipo comprobante, Serie, Número, Fecha factura, Moneda, Importe total, Importe pago, Importe retenido, Letras, Apellido materno, Apellido paterno, Nombres y Total pagado acumulado por proveedor
+Y se inicia la descarga automática del archivo.
+
+--------
+
+Escenario 2: Mes no válido y año válido → Mensaje de error, no se genera archivo
+Dado que el usuario accede al módulo de Intervenciones del sistema de gestión de retenciones
+Y ingresa o selecciona un mes no válido (por ejemplo: valor 00, 13, vacío, o un texto no numérico) en el campo "Mes"
+Y selecciona un año válido (por ejemplo, 2025) en el campo "Año"
+Cuando hace clic en el botón “Generar”
+Entonces el sistema no genera ningún archivo
+Y se muestra un mensaje de error claro indicando: “Mes inválido. Por favor seleccione un valor entre 01 y 12.”
+Y el proceso se detiene sin descargar ningún archivo.
