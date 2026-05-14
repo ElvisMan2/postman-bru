@@ -28,3 +28,69 @@ No.	input-fecha
 En el caso No Ok se muestra: Error
 No existen resultados!
 La consulta no devolvió registros para la búsqueda realizada.
+
+--------
+descr:
+Como usuario del sistema de comprobantes de retención, Quiero acceder al módulo SUNAT que contiene dos submódulos: el primero, "Archivo Diario", que permite generar un informe ingresando una fecha de inicio y una fecha de fin, con opción de exportar en formato texto o Excel; y el segundo, "Enviar información de archivos diarios", que permite ingresar una fecha específica y exportar los datos de retenciones de ese día en formato XLS o TXT, Para poder obtener reportes diarios y por rango de fechas en los formatos requeridos, facilitando el análisis, el envío de información a entidades externas y el cumplimiento de obligaciones ante la SUNAT.
+
+
+
+
+Criterios de Aceptación (Gherkin)
+Submódulo 1: Archivo Diario (generación por rango de fechas)
+Escenario 1: Fechas válidas → generación exitosa
+Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
+Y ingresa una fecha de inicio válida (formato dd/MM/yyyy)
+Y ingresa una fecha de fin válida (posterior o igual a la fecha de inicio)
+Cuando hace clic en el botón “Generar TXT” o “Generar Excel”
+Entonces el sistema consulta los registros de retenciones en el rango de fechas indicado
+Y genera el archivo en el formato seleccionado (texto plano o Excel)
+Y se inicia la descarga automática del archivo con los resultados.
+
+Escenario 2: Fecha inicio no válida y fecha fin válida → mensaje de error
+Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
+Y ingresa una fecha de inicio no válida (formato incorrecto, vacía, fecha futura, etc.)
+Y ingresa una fecha de fin válida
+Cuando hace clic en el botón “Generar TXT” o “Generar Excel”
+Entonces el sistema no genera ningún archivo
+Y se muestra el mensaje de error:
+
+Error
+No existen resultados!
+La consulta no devolvió registros para la búsqueda realizada.
+Y el proceso se detiene sin descarga.
+
+Escenario 3: Fecha inicio válida y fecha fin no válida → mensaje de error
+Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
+Y ingresa una fecha de inicio válida
+Y ingresa una fecha de fin no válida (formato incorrecto, vacía, anterior a la fecha de inicio, etc.)
+Cuando hace clic en el botón “Generar TXT” o “Generar Excel”
+Entonces el sistema no genera ningún archivo
+Y se muestra el mensaje de error:
+
+Error
+No existen resultados!
+La consulta no devolvió registros para la búsqueda realizada.
+Y el proceso se detiene sin descarga.
+
+Submódulo 2: Enviar información de archivos diarios (exportación por fecha específica)
+Escenario 4: Fecha válida → exportación exitosa
+Dado que el usuario accede al submódulo "Enviar información de archivos diarios" del módulo SUNAT
+Y ingresa una fecha válida (formato dd/MM/yyyy y no mayor al día actual) en el campo de fecha
+Cuando hace clic en el botón “Exportar XLS” o “Exportar TXT”
+Entonces el sistema consulta los registros de retenciones para la fecha ingresada
+Y genera el archivo en el formato seleccionado (XLS o TXT)
+Y se inicia la descarga automática del archivo.
+
+Escenario 5: Fecha no válida → mensaje de error
+Dado que el usuario accede al submódulo "Enviar información de archivos diarios" del módulo SUNAT
+Y ingresa una fecha no válida (formato incorrecto, vacía, fecha futura o inexistente)
+Cuando hace clic en el botón “Exportar XLS” o “Exportar TXT”
+Entonces el sistema no genera ningún archivo
+Y se muestra el mensaje de error:
+
+Error
+No existen resultados!
+La consulta no devolvió registros para la búsqueda realizada.
+Y el proceso se detiene sin descarga.
+
