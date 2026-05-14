@@ -1,0 +1,30 @@
+ayudame con otra historia de usuario, dentro del sistema de comprobantes de retención dento el modulo sunat con dos submodulos:
+"submodulo archivo diario"  que permite generar un informe ingresando la fecha de inicio y la fecha de fin
+permite generar en formato de texto y en formto excel (dos botones)
+
+Los escenarios son tres:
+
+No.	input-fechaInicio	input-fechaFin
+1	Valida	Valida
+2	~No valido	Valida
+3	Valida	~No valido
+
+En los casos No Ok se muestra: Error
+No existen resultados!
+La consulta no devolvió registros para la búsqueda realizada.
+
+
+
+"submodulo es ENVIAR INFORMACIÓN DE ARCHIVOS DIARIOS"
+
+que presenta un input de fecha con dos botones exportar xls y exportar txt
+los escenarios son tres:
+
+No.	input-fecha        
+1	Valida
+2	~No valido
+
+
+En el caso No Ok se muestra: Error
+No existen resultados!
+La consulta no devolvió registros para la búsqueda realizada.
