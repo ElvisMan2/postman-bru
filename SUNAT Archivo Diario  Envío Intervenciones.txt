@@ -38,7 +38,8 @@ Como usuario del sistema de comprobantes de retención, Quiero acceder al módul
 
 Criterios de Aceptación (Gherkin)
 Submódulo 1: Archivo Diario (generación por rango de fechas)
-Escenario 1: Fechas válidas → generación exitosa
+
+Escenario 1: Archivo Diario -Fechas válidas generación exitosa
 Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
 Y ingresa una fecha de inicio válida (formato dd/MM/yyyy)
 Y ingresa una fecha de fin válida (posterior o igual a la fecha de inicio)
@@ -47,7 +48,7 @@ Entonces el sistema consulta los registros de retenciones en el rango de fechas 
 Y genera el archivo en el formato seleccionado (texto plano o Excel)
 Y se inicia la descarga automática del archivo con los resultados.
 
-Escenario 2: Fecha inicio no válida y fecha fin válida → mensaje de error
+Escenario 2: Archivo Diario-Fecha inicio no válida y fecha fin válida
 Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
 Y ingresa una fecha de inicio no válida (formato incorrecto, vacía, fecha futura, etc.)
 Y ingresa una fecha de fin válida
@@ -60,7 +61,7 @@ No existen resultados!
 La consulta no devolvió registros para la búsqueda realizada.
 Y el proceso se detiene sin descarga.
 
-Escenario 3: Fecha inicio válida y fecha fin no válida → mensaje de error
+Escenario 3: Archivo Diario-Fecha inicio válida y fecha fin no válida
 Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
 Y ingresa una fecha de inicio válida
 Y ingresa una fecha de fin no válida (formato incorrecto, vacía, anterior a la fecha de inicio, etc.)
@@ -74,7 +75,7 @@ La consulta no devolvió registros para la búsqueda realizada.
 Y el proceso se detiene sin descarga.
 
 Submódulo 2: Enviar información de archivos diarios (exportación por fecha específica)
-Escenario 4: Fecha válida → exportación exitosa
+Escenario 4: Envio a Intervenciones-Fecha válida
 Dado que el usuario accede al submódulo "Enviar información de archivos diarios" del módulo SUNAT
 Y ingresa una fecha válida (formato dd/MM/yyyy y no mayor al día actual) en el campo de fecha
 Cuando hace clic en el botón “Exportar XLS” o “Exportar TXT”
@@ -82,7 +83,7 @@ Entonces el sistema consulta los registros de retenciones para la fecha ingresad
 Y genera el archivo en el formato seleccionado (XLS o TXT)
 Y se inicia la descarga automática del archivo.
 
-Escenario 5: Fecha no válida → mensaje de error
+Escenario 5: Envio a Intervenciones-Fecha no válida
 Dado que el usuario accede al submódulo "Enviar información de archivos diarios" del módulo SUNAT
 Y ingresa una fecha no válida (formato incorrecto, vacía, fecha futura o inexistente)
 Cuando hace clic en el botón “Exportar XLS” o “Exportar TXT”
