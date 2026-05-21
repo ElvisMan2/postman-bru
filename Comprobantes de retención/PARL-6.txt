@@ -1,0 +1,82 @@
+TEST 07 — OK — Archivo Diario con fechas válidas
+
+Archivo Diario - OK - Procesar rango de fechas válido y generar archivo correctamente
+
+Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
+Y ingresa una fecha de inicio válida
+Y la fecha de inicio corresponde a la fecha actual o anterior
+Y ingresa una fecha de fin válida
+Y la fecha de fin corresponde a la fecha actual o posterior a la fecha de inicio
+Y existen registros de retenciones para el rango de fechas ingresado
+Cuando hace clic en el botón “Generar TXT” o “Generar Excel”
+Entonces el sistema consulta los registros de retenciones en el rango indicado
+Y se genera el archivo en el formato seleccionado
+Y el archivo generado corresponde al formato TXT o Excel
+Y se inicia la descarga automática del archivo
+Y el estado final del proceso es SUCCESS
+
+-------------------------------------
+
+TEST 08 — NO OK — Fecha inicio no válida y fecha fin válida
+
+Archivo Diario - NO OK - Validar fecha de inicio futura o posterior a fecha fin
+
+Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
+Y ingresa una fecha de inicio no válida
+Y la fecha de inicio es futura o posterior a la fecha fin
+Y ingresa una fecha de fin válida
+Cuando hace clic en el botón “Generar TXT” o “Generar Excel”
+Entonces el sistema no genera ningún archivo
+Y no se inicia la descarga de ningún archivo
+Y se muestra un mensaje de error
+Y el estado final del proceso es FAILED
+
+------------------------------------
+
+TEST 09 — NO OK — Fecha inicio válida y fecha fin no válida
+
+Archivo Diario - NO OK - Validar fecha fin futura o anterior a fecha inicio
+
+Dado que el usuario accede al submódulo "Archivo Diario" del módulo SUNAT
+Y ingresa una fecha de inicio válida
+Y la fecha de inicio corresponde a la fecha actual o anterior
+Y ingresa una fecha de fin no válida
+Y la fecha de fin es futura o anterior a la fecha de inicio
+Cuando hace clic en el botón “Generar TXT” o “Generar Excel”
+Entonces el sistema no genera ningún archivo
+Y no se inicia la descarga de ningún archivo
+Y se muestra el mensaje “La consulta no devolvió registros para la búsqueda realizada.”
+Y el estado final del proceso es FAILED
+
+
+------------------------------------------
+
+TEST 10 — OK — Envío a Intervenciones con fecha válida
+
+Envío a Intervenciones - OK - Procesar fecha válida y generar archivo correctamente
+
+Dado que el usuario accede al submódulo "Enviar información de archivos diarios" del módulo SUNAT
+Y ingresa una fecha válida en el campo de fecha
+Y la fecha ingresada corresponde a la fecha actual o anterior
+Y existen registros de retenciones para la fecha ingresada
+Cuando hace clic en el botón “Exportar XLS” o “Exportar TXT”
+Entonces el sistema consulta los registros de retenciones correspondientes a la fecha ingresada
+Y se genera el archivo en el formato seleccionado
+Y el archivo generado corresponde al formato XLS o TXT
+Y se inicia la descarga automática del archivo
+Y el estado final del proceso es SUCCESS
+
+-------------------------------------------
+
+TEST 11 — NO OK — Envío a Intervenciones con fecha no válida
+
+Envío a Intervenciones - NO OK - Validar fecha futura o sin registros
+
+Dado que el usuario accede al submódulo "Enviar información de archivos diarios" del módulo SUNAT
+Y ingresa una fecha no válida en el campo de fecha
+Y la fecha ingresada es futura o no contiene registros
+Cuando hace clic en el botón “Exportar XLS” o “Exportar TXT”
+Entonces el sistema no genera ningún archivo
+Y no se inicia la descarga de ningún archivo
+Y se muestra el mensaje “La consulta no devolvió registros para la búsqueda realizada”
+Y el estado final del proceso es FAILED

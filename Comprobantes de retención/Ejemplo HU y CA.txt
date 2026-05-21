@@ -1,0 +1,45 @@
+Estructura estándar de HU en Jira.
+Redacción tipo COMEXTRA (Como - Quiero - Para).
+Criterios de aceptación en formato Gherkin (Dado - Cuando - Entonces).
+
+
+
+
+*Historia de Usuario
+ Como cliente
+ Quiero transferir dinero entre cuentas
+ Para realizar pagos y movimientos bancarios
+
+*Criterios de aceptación:
+
+-Escenario 1: Transferencia exitosa
+ Dado que el cliente tiene saldo disponible
+ Cuando realiza una transferencia válida
+ Entonces el sistema debe procesarla correctamente
+
+-Escenario 2: Saldo insuficiente
+ Dado que el cliente no tiene saldo suficiente
+ Cuando intenta realizar la transferencia
+ Entonces el sistema debe mostrar un mensaje de error
+
+-Escenario 3: Cuenta destino inválida
+ Dado que la cuenta destino no existe
+ Cuando el cliente intenta transferir
+ Entonces el sistema debe rechazar la operación
+ 
+ 
+ -----------------------
+ 
+ Sistema
+ ├── Épica
+ │    ├── Historia de usuario
+ │    │      ├── Criterio de aceptación (tiene uno o mas casos de prueba)
+ │    │      ├── Criterio de aceptación
+ │    │      └── Criterio de aceptación
+ │    │
+ │    └── Historia de usuario
+ │           ├── Criterio de aceptación
+ │           └── Criterio de aceptación
+ │
+ └── Épica
+       └── Historia de usuario

@@ -1,0 +1,73 @@
+TEST 01 — OK — Generación de reporte PDF con fecha válida
+
+Generación Reporte Verificación Diaria de Retenciones PDF - OK - Procesar fecha válida y generar reporte PDF correctamente
+
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha válida en el campo de entrada
+Y la fecha ingresada contiene registros de certificados
+Y la fecha ingresada no es mayor a la fecha actual
+Y el usuario hace clic en el botón “Generar PDF”
+Cuando el sistema procesa la solicitud
+Entonces se genera el reporte en formato PDF
+Y el PDF contiene la fecha consultada
+Y el PDF contiene las columnas RUC, Contrato, Proveedor, Tipo Doc., Nro. Ser., Nro, Fecha Doc., Tipo Mon., Importe Total, Importe de Pago, Importe Retenido M.N. y Tipo Cambio
+Y el PDF contiene la sumatoria total de retenciones del día
+Y se inicia la descarga automática del archivo
+Y el estado final del proceso es SUCCESS
+
+
+---------
+
+TEST 02 — OK — Generación de reporte Excel con fecha válida
+
+Generación Reporte Verificación Diaria de Retenciones Excel - OK - Procesar fecha válida y generar reporte Excel correctamente
+
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha válida en el campo de entrada
+Y la fecha ingresada contiene registros de certificados
+Y la fecha ingresada no es mayor a la fecha actual
+Y el usuario hace clic en el botón “Generar Excel”
+Cuando el sistema procesa la solicitud
+Entonces se genera el reporte en formato Excel
+Y el archivo generado tiene extensión .xlsx o .xls
+Y el Excel contiene la fecha consultada
+Y el Excel contiene las columnas RUC, Contrato, Proveedor, Tipo Doc., Nro. Ser., Nro, Fecha Doc., Tipo Mon., Importe Total, Importe de Pago, Importe Retenido M.N. y Tipo Cambio
+Y el Excel contiene la sumatoria total de retenciones del día
+Y se inicia la descarga automática del archivo
+Y el estado final del proceso es SUCCESS
+
+
+
+---------------------------
+
+TEST 03 — NO OK — Solicitud de reporte PDF con fecha no válida
+
+Generación Reporte Verificación Diaria de Retenciones PDF - NO OK - Validar fecha sin certificados o mayor a la actual
+
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha no válida en el campo de entrada
+Y la fecha ingresada no contiene registros de certificados o es mayor a la fecha actual
+Y el usuario hace clic en el botón “Generar PDF”
+Cuando el sistema valida la fecha ingresada
+Entonces no se genera ningún reporte en formato PDF
+Y se muestra el mensaje “No se registran certificados correspondientes a la fecha seleccionada.”
+Y no se inicia la descarga de ningún archivo
+Y el estado final del proceso es FAILED
+
+------------------------------
+
+
+TEST 04 — NO OK — Solicitud de reporte Excel con fecha no válida
+
+
+Generación Reporte Verificación Diaria de Retenciones Excel - NO OK - Validar fecha sin certificados o mayor a la actual
+
+Dado que el usuario accede al módulo de reporte de verificación diaria de retenciones
+Y ingresa una fecha no válida en el campo de entrada
+Y la fecha ingresada no contiene registros de certificados o es mayor a la fecha actual
+Y el usuario hace clic en el botón “Generar Excel”
+Cuando el sistema valida la fecha ingresada
+Entonces no se genera ningún reporte en formato Excel
+Y se muestra el mensaje “No se registran certificados correspondientes a la fecha seleccionada.”
+Y no se inicia la descarga de ningún archivo
+Y el estado final del proceso es FAILED

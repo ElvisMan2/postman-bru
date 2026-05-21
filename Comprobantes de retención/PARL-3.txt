@@ -1,0 +1,33 @@
+TEST 05 — OK — Generación exitosa del archivo leasing.dbf con mes y año válidos
+
+Generación Archivo leasing.dbf - OK - Procesar mes y año válidos y generar archivo DBF correctamente
+
+Dado que el usuario accede al módulo de Intervenciones del sistema de gestión de retenciones
+Y selecciona un mes válido en el campo "Mes"
+Y el mes seleccionado corresponde al mes actual o anterior
+Y selecciona un año válido en el campo "Año"
+Y existen retenciones registradas para el mes y año seleccionados
+Cuando hace clic en el botón “Generar”
+Entonces el sistema consulta las retenciones registradas en el periodo seleccionado
+Y se genera un archivo en formato DBF
+Y el archivo generado tiene el nombre leasing.dbf
+Y el archivo contiene las columnas RUC, Proveedor, Día, Mes, Año, Certificado, Tipo comprobante, Serie, Número, Fecha factura, Moneda, Importe total, Importe pago, Importe retenido, Letras, Apellido materno, Apellido paterno, Nombres y Total pagado acumulado por proveedor
+Y se inicia la descarga del archivo
+Y el estado final del proceso es SUCCESS
+
+--------------------------
+
+
+TEST 06 — NO OK — Mes no válido y año válido, no se genera archivo
+
+Generación Archivo leasing.dbf - NO OK - Validar mes posterior al actual y evitar generación del archivo
+
+Dado que el usuario accede al módulo de Intervenciones del sistema de gestión de retenciones
+Y ingresa o selecciona un mes no válido en el campo "Mes"
+Y el mes seleccionado es posterior al mes actual
+Y selecciona un año válido en el campo "Año"
+Cuando hace clic en el botón “Generar”
+Entonces el sistema no genera ningún archivo DBF
+Y se muestra el mensaje “La consulta no devolvió registros para la búsqueda realizada”
+Y no se inicia la descarga de ningún archivo
+Y el estado final del proceso es FAILED
